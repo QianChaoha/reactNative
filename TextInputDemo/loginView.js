@@ -19,6 +19,7 @@ import {
 var Dimensions = require('Dimensions');
 var windowWidth = Dimensions.get('window').width;
 class AA extends Component {
+
     render() {
         return (
             <View style={styles.container}>
@@ -34,14 +35,18 @@ class AA extends Component {
                     }}
                 />
                 <TextInput placeholder='请输入用户名' style={styles.textInputUserNameStyle}></TextInput>
-                <TextInput placeholder='请输入密码' style={
+                <TextInput
+                    placeholder='请输入密码'
+                    password={true}
+                    style={
                     styles.textInputPasswordStyle
                     }
                 ></TextInput>
                 <TouchableOpacity
                     //按下时透明度变化
                     activeOpacity={0.5}
-                    onPress={Alert.alert('点击')}
+                    onPress={()=>this.activeEvent('点击')}
+                    onPressIn={()=>this.activeEvent('按下')}
                     // onPressIn={Alert.alert('按下')}
                     // onPressOut={Alert.alert('抬起')}
                     // onLongPress={AlertAlert.alert.alert('长按不放')}
@@ -51,7 +56,6 @@ class AA extends Component {
                         <Text style={{
                          color:'white',
                          fontSize:20,
-
                         }}>登录</Text>
                     </View>
                 </TouchableOpacity>
@@ -73,6 +77,7 @@ class AA extends Component {
                        textAlign:'right',
                         marginRight:20,
                         color:'#63B7FF',
+                        fontSize:20,
                     }}>新用户</Text>
                 </View>
                 <View style={{
@@ -108,6 +113,10 @@ class AA extends Component {
                 </View>
             </View>
         );
+    }
+
+    activeEvent(event){
+        Alert.alert(event)
     }
 }
 
