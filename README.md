@@ -28,3 +28,10 @@
   
   这个示例程序运行起来后是一个轮播图效果。主要涉及ScrollView,计时器的使用(开启,清除,重新启动),getDefaultProps()和getInitialState()方法中赋值, ScrollView的监听事件(开始拖拽,结束拖拽,每帧滚动完毕),在Text中放了2个样式,给控件加refs(安卓中的id)
   控件的生命周期 https://mp.weixin.qq.com/s?__biz=MzIxNjEzNjUzOQ==&mid=402039662&idx=1&sn=f3ea81d2777d657a1f39351b2893e405&chksm=058fad5a32f8244c5ffdbaacf820a173cadc91faa4e238b84466837861cd11370b017825d1c3&scene=18#rd
+  
+  ## 7.ListViewDemo
+  这个示例程序主要使用ListView控件加载数据,显示的效果跟Android中ListView效果一样
+  
+  ## 8.JggListView
+    这个示例程序主要使用ListView控件实现一个九宫格效果,通过设置相关属性,使 ListView横向显示每个Item,显示不下时自动换行
+  
