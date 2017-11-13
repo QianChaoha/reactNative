@@ -15,7 +15,7 @@ import {
 var requireData = require('./1.json');
 var demension = require('Dimensions');
 var width=demension.get('window').width;
-var imageWidth=150;
+var imageWidth=200;
 var column=3;
 //计算出如果分3列，每列的间隔
 var margin=(width - column*imageWidth)/(column+1);
@@ -55,7 +55,10 @@ const styles = StyleSheet.create({
         // justifyContent: 'center',
 
         flexDirection: 'row',
-        //换行
+        // 项目都排在一条线（又称"轴线"）上。flex-wrap属性定义，如果一条轴线排不下，如何换行。
+        // nowrap(默认值)：不换行。
+        // wrap：换行，第一行在上方。
+        // wrap-reverse：换行，第一行在下方。（和wrap相反）
         flexWrap: 'wrap',
 
     },
