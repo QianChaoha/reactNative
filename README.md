@@ -36,4 +36,7 @@
   ## 8.JggListView
   
   这个示例程序主要使用ListView控件实现一个九宫格效果,通过设置相关属性,使 ListView横向显示每个Item,显示不下时自动换行
+  ## 9.CarListView
+  
+  这个示例程序主要使用ListView控件实现一个吸顶的效果,只是在IOS上可以看出效果，Android暂时还不行。注意:Image控件加载本地图片时，拼接图片地址会报错
   
