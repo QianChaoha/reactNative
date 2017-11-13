@@ -43,8 +43,8 @@ export class BViewDemo extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'red',
-        flexDirection: 'row',//该属性决定主轴的方向
+        backgroundColor: 'white',
+        flexDirection: 'row',//该属性决定主轴的方向，column竖直方向
         justifyContent: 'flex-end',// 定义了伸缩项目在主轴线的对齐方式
         marginTop: 20,
         alignItems: 'flex-end',//定义项目在交叉轴上如何对齐
