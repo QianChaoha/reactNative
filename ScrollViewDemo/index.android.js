@@ -53,6 +53,8 @@ var ScrollViewDemo = React.createClass({
                     // onMomentumScrollEnd={(e)=>this.onAnimationEnd(e)}
                     ref='scrollView'
                     //开始拖拽,此时计时器停止
+                    //简单点说，带括号的是函数调用，直接执行函数；不带括号的是绑定事件，事件触发再执行。
+                    //复杂点说，带括号的是把返回值赋值给事件，不带括号的是把函数体所在地址位置赋值给事件。
                     onScrollBeginDrag={this.stopTimer}
                     //当结束手动拖拽的时候调用
                     onScrollEndDrag={(e)=>this.onAnimationEnd(e)}
@@ -93,14 +95,15 @@ var ScrollViewDemo = React.createClass({
             var style = (i == this.state.currentPage) ? {backgroundColor: 'orange'} : {backgroundColor: 'white'};
             textArr.push(
                 <Text key={i}
+                    // 多种样式写法style={[   样式一,样式二,...       ]};
                     //放了2个样式
                       style={
                         [
                             {
-                            width:20,
-                            height:20,
-                            borderRadius:10,
-                            marginLeft:10
+                                width:20,
+                                height:20,
+                                borderRadius:10,
+                                marginLeft:10
                             },
                             style
                         ]
@@ -114,40 +117,40 @@ var ScrollViewDemo = React.createClass({
         //水平方向偏移量
         var offsetX = e.nativeEvent.contentOffset.x;
         //当前页数
-        var currentPageTemp = Math.floor(offsetX / windowWidth+0.5);
+        var currentPageTemp = Math.floor(offsetX / windowWidth + 0.5);
         //更新状态机,重新绘制UI
         this.setState({
             currentPage: currentPageTemp
-        },function () {
-                var scrollView = this.refs.scrollView;
-                //让scrollview滚动起来
-                var offsetX=this.state.currentPage*windowWidth;
-                scrollView.scrollResponderScrollTo({x:offsetX,y:0,animated:true});
+        }, function () {
+            var scrollView = this.refs.scrollView;
+            //让scrollview滚动起来
+            var offsetX = this.state.currentPage * windowWidth;
+            scrollView.scrollResponderScrollTo({x: offsetX, y: 0, animated: true});
         });
         this.startTimer();
     },
     startTimer(){
         // this.scrollToCurrentPage();
         //添加计时器（1秒执行一次function方法）
-        this.timer=this.setInterval(function () {
+        this.timer = this.setInterval(function () {
             var scrollView = this.refs.scrollView;
             var temp;
-            if (this.state.currentPage<4){
-                temp=this.state.currentPage+1;
+            if (this.state.currentPage < 4) {
+                temp = this.state.currentPage + 1;
 
-            }else {
-                temp=0;
+            } else {
+                temp = 0;
             }
             //setState方法异步,设置成功后会回调后面的function方法
             this.setState({
-                currentPage:temp
-            },function () {
-                console.log("scrollTo  "+this.state.currentPage+"   temp "+temp);
+                currentPage: temp
+            }, function () {
+                console.log("scrollTo  " + this.state.currentPage + "   temp " + temp);
                 //让scrollview滚动起来
-                var offsetX=this.state.currentPage*windowWidth;
-                scrollView.scrollResponderScrollTo({x:offsetX,y:0,animated:true});
+                var offsetX = this.state.currentPage * windowWidth;
+                scrollView.scrollResponderScrollTo({x: offsetX, y: 0, animated: true});
             });
-        },this.props.duration);
+        }, this.props.duration);
     },
     allChildView() {
         var color = ['red', 'yellow', 'purple', 'black', 'red', 'yellow', 'black', 'purple'];

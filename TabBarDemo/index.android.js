@@ -23,7 +23,16 @@ var TabBarDemo = React.createClass({
   render() {
     return (
       <View style={styles.container}>
-        <TabNavigator>
+        {/**
+         * TabNavigator在github地址https://github.com/happypancake/react-native-tab-navigator
+         */}
+        <TabNavigator 
+         //导航条的背景颜色
+          barTintColor='black'
+          // style={{
+          //   height:'80px'
+          // }}
+        >
           <TabNavigator.Item
             //设置选中的位置
             selected={this.state.selectedTab === 'Event'}
@@ -92,15 +101,15 @@ const styles = StyleSheet.create({
   },
   tabText: {
     fontSize: 16,
-    color: 'black'
+    color: 'black',
   },
   selectedTabText: {
-    fontSize: 10,
+    fontSize: 16,
     color: 'red'
   },
   icon: {
-    width: 26,
-    height: 26,
+    width: 20,
+    height: 20,
   },
   page0: {
     flex: 1,

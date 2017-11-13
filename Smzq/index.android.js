@@ -45,8 +45,8 @@ var Smzq = React.createClass({
         // 注意：一旦调用了this.setState方法，组件一定会调用render方法，对组件进行再次的渲染，
         // 不过，如果React框架会自动根据DOM的状态来判断是否需要真正的渲染
         this.setState({
-            title :event
-    })
+            title: event
+        })
     },
 })
 

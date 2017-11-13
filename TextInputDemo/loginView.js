@@ -18,7 +18,7 @@ import {
 } from 'react-native';
 var Dimensions = require('Dimensions');
 var windowWidth = Dimensions.get('window').width;
-class AA extends Component {
+class LoginView extends Component {
 
     render() {
         return (
@@ -45,8 +45,8 @@ class AA extends Component {
                 <TouchableOpacity
                     //按下时透明度变化
                     activeOpacity={0.5}
-                    onPress={()=>this.activeEvent('点击')}
-                    onPressIn={()=>this.activeEvent('按下')}
+                    // onPress={()=>this.activeEvent('点击')}
+                    // onPressIn={()=>this.activeEvent('按下')}
                     // onPressIn={Alert.alert('按下')}
                     // onPressOut={Alert.alert('抬起')}
                     // onLongPress={AlertAlert.alert.alert('长按不放')}
@@ -83,14 +83,13 @@ class AA extends Component {
                 <View style={{
                         flexDirection:'row',
                         marginLeft:20,
-                        alignSelf:'flex-start',
                         //绝对定位
                         position:'absolute',
                         bottom:20,
-                        left: 20
+                        left: 20,
+                        alignItems:'center'
                         }}>
                     <Text style={{
-                        alignSelf:'center',
                         color:'black',
                         fontWeight:'bold',
                         fontSize:18,
@@ -155,4 +154,4 @@ const styles = StyleSheet.create({
     }
 });
 //输出类
-module.exports = AA;
+module.exports = LoginView;
