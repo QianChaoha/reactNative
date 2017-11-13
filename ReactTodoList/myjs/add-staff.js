@@ -92,4 +92,5 @@ var ListTodo = React.createClass({
     }
 });
 // 将 TodoList 组件渲染到页面
-ReactDOM.render(<TodoList />, document.getElementById('container'));
+// ReactDOM.render(<TodoList />, document.getElementById('container'));
+export default TodoList;
