@@ -17,6 +17,9 @@ export default React.createClass({
         }else{
             reaultData=this.props.toDo;
         }
+        if (reaultData.length==0){
+            return <div></div>
+        }
         return (
             <ul id="todo-list">
                 {
@@ -33,10 +36,6 @@ export default React.createClass({
                 }
             </ul>
         );
-    },
-    componentWillUnmount(){
-        //存储数据
-        var localStorage=window.localStorage;
-        localStorage.setItem("data",this.props.toDo);
     }
+   
 })

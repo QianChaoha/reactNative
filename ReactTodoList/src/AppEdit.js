@@ -7,7 +7,11 @@ export default React.createClass({
     };
   },
   back(e){
-    this.state.allList[this.props.params.id]=e.target.value;
+    if (this.refs.editText.value==""||this.refs.editText.value.trim()==""){
+      alert("不能为空");
+      return;
+    }
+    this.state.allList[this.props.params.id]=this.refs.editText.value;
     var localStorage=window.localStorage;
     localStorage.setItem("data",this.state.allList);
     window.history.back();
@@ -15,7 +19,7 @@ export default React.createClass({
   render() {
     return (
         <span>
-          <input type="text" defaultValue={this.state.allList[this.props.params.id]}></input>
+          <input ref="editText" type="text" defaultValue={this.state.allList[this.props.params.id]}></input>
           <input type="button" value="确定" onClick={this.back}/>
         </span>
     )

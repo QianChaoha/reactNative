@@ -8,11 +8,22 @@ import AppContent from './AppContent';
 export default React.createClass({
     // 初始化数据
     getInitialState: function () {
-        return {
-            allList: [],
-            searchlist: [],
-            isSearch:false
-        };
+        //读取数据
+        var localStorage=window.localStorage;
+        if (typeof localStorage.getItem("data") !==undefined&&localStorage.getItem("data")!==""){
+            return {
+                allList: localStorage.getItem("data").split(','),
+                searchlist: [],
+                isSearch:false
+            };
+        }else {
+            return {
+                allList: [],
+                searchlist: [],
+                isSearch:false
+            };
+        }
+        
     },
     // 接收一个传入的数据，并将它实时更新到组件的 state 中，以便组件根据数据重新render
     handleChange: function (rows) {
@@ -28,6 +39,9 @@ export default React.createClass({
         });
     },
     render: function () {
+        //存储数据
+        var localStorage=window.localStorage;
+        localStorage.setItem("data",this.state.allList);
         return (
             <div>
                 {/*集成 AppTitleSearch 组件，传入两个属性 onAdd 和 toDo,用于显示顶部搜索内容*/}
@@ -37,5 +51,5 @@ export default React.createClass({
                 <AppContent onDel={this.handleChange} toDo={this.state.allList} searchResult={this.state.searchList} isSearch={this.state.isSearch}/>
             </div>
         );
-    }
+    },
 });
