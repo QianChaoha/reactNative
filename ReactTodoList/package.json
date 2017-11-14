@@ -1,22 +1,25 @@
 {
-  "name": "react-server",
+  "name": "tutorial",
   "version": "1.0.0",
-  "description": "an example of react.js in server",
-  "main": "server.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "build": "babel -d build/transport/ src/",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postbuild": "webpack"
+    "start": "webpack-dev-server --inline --content-base ."
   },
-  "author": "ruanyf",
+  "author": "",
   "license": "ISC",
   "dependencies": {
-    "browserify": "~9.0.3",
-    "literalify": "~0.4.0",
-    "react": "^0.14.0",
-    "react-dom": "^0.14.0"
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-router": "^2.0.0"
   },
   "devDependencies": {
-    "babel": "~5.8.21"
+    "babel-core": "^6.5.1",
+    "babel-loader": "^6.2.2",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-react": "^6.5.0",
+    "http-server": "^0.8.5",
+    "webpack": "^1.12.13",
+    "webpack-dev-server": "^1.14.1"
   }
 }

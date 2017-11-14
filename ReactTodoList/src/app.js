@@ -3,9 +3,9 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AppTitleSearch from './components/AppTitleSearch';
-import AppContent from './components/AppContent';
-var TodoList = React.createClass({
+import AppTitleSearch from './AppTitleSearch';
+import AppContent from './AppContent';
+export default React.createClass({
     // 初始化数据
     getInitialState: function () {
         return {
@@ -39,5 +39,3 @@ var TodoList = React.createClass({
         );
     }
 });
-// 将 TodoList 组件渲染到页面
-ReactDOM.render(<TodoList/>, document.getElementById('app'));
