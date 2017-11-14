@@ -4,9 +4,9 @@
   "description": "an example of react.js in server",
   "main": "server.js",
   "scripts": {
-    "build": "babel -d build/transport/ test/",
+    "build": "babel -d build/transport/ src/",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postbuild": "webpack 2.js out.js"
+    "postbuild": "webpack"
   },
   "author": "ruanyf",
   "license": "ISC",
