@@ -10873,28 +10873,37 @@ var TodoList = _react2['default'].createClass({
     // 初始化数据
     getInitialState: function getInitialState() {
         return {
-            todolist: []
+            allList: [],
+            searchlist: [],
+            isSearch: false
         };
     },
     // 接收一个传入的数据，并将它实时更新到组件的 state 中，以便组件根据数据重新render
     handleChange: function handleChange(rows) {
         this.setState({
-            todolist: rows
+            allList: rows,
+            isSearch: false
+        });
+    },
+    searchData: function searchData(rows) {
+        this.setState({
+            searchList: rows,
+            isSearch: true
         });
     },
     render: function render() {
         return _react2['default'].createElement(
             'div',
             null,
-            _react2['default'].createElement(_componentsAppTitleSearch2['default'], { onAdd: this.handleChange, toDo: this.state.todolist }),
-            _react2['default'].createElement(_componentsAppContent2['default'], { onDel: this.handleChange, toDo: this.state.todolist })
+            _react2['default'].createElement(_componentsAppTitleSearch2['default'], { onAdd: this.handleChange, toDo: this.state.allList, onSearch: this.searchData }),
+            _react2['default'].createElement(_componentsAppContent2['default'], { onDel: this.handleChange, toDo: this.state.allList, searchResult: this.state.searchList, isSearch: this.state.isSearch })
         );
     }
 });
 // 将 TodoList 组件渲染到页面
 _reactDom2['default'].render(_react2['default'].createElement(TodoList, null), document.getElementById('app'));
-/*集成 AppTitleSearch 组件，传入两个属性 onAdd 和 todo,用于显示顶部搜索内容*/ /*
-                                                        集成 AppContent 组件，传入两个属性onDel和 todo,用于显示主体内容*/
+/*集成 AppTitleSearch 组件，传入两个属性 onAdd 和 toDo,用于显示顶部搜索内容*/ /*
+                                                        集成 AppContent 组件，传入两个属性onDel和 toDo,用于显示主体内容*/
 
 /***/ }),
 /* 87 */
@@ -20015,15 +20024,36 @@ var AppTitleSearch = (function (_React$Component) {
     _createClass(AppTitleSearch, [{
         key: 'handleAdd',
         value: function handleAdd(e) {
-            e.preventDefault();
             // 通过 refs 获取dom元素，然后获取输入的内容
-            var inputDom = this.refs.inputnew.getDOMNode();
-            var newthing = inputDom.value.trim();
+            var inputDom = this.refs.inputnew;
+            var itemText = inputDom.value.trim();
             // 获取传入的todolist数据
             var rows = this.props.toDo;
-            if (newthing !== '') {
+            if (itemText !== '') {
                 // 更新数据，并使用 onAdd 更新到 TodoList 组件的 state 中
-                rows.push(newthing);
+                rows.push(itemText);
+                this.props.onAdd(rows);
+            }
+            inputDom.value = '';
+        }
+    }, {
+        key: 'handleSearch',
+        value: function handleSearch(e) {
+            // 通过 refs 获取dom元素，然后获取输入的内容
+            var inputDom = this.refs.inputnew;
+            var itemText = inputDom.value.trim();
+            // 获取传入的todolist数据
+            var rows = this.props.toDo;
+            var searchResult = [];
+            if (itemText !== '') {
+                // 更新数据，并使用 onAdd 更新到 TodoList 组件的 state 中
+                rows.map(function (item, i) {
+                    if (item === itemText) {
+                        searchResult.push(itemText);
+                    }
+                });
+                this.props.onSearch(searchResult);
+            } else {
                 this.props.onAdd(rows);
             }
             inputDom.value = '';
@@ -20032,11 +20062,13 @@ var AppTitleSearch = (function (_React$Component) {
         key: 'render',
         value: function render() {
             return(
-                // form submit 时，触发 handleAdd 事件
+                // button click时，触发 handleAdd 事件
                 _react2['default'].createElement(
-                    'form',
-                    { onSubmit: this.handleAdd.bind(this) },
-                    _react2['default'].createElement('input', { type: 'text', ref: 'inputnew', id: 'todo-new', placeholder: 'typing a newthing todo', autoComplete: 'off' })
+                    'span',
+                    null,
+                    _react2['default'].createElement('input', { type: 'text', ref: 'inputnew', id: 'todo-new', placeholder: '请输入姓名', autoComplete: 'off' }),
+                    _react2['default'].createElement('input', { type: 'button', onClick: this.handleAdd.bind(this), value: '添加' }),
+                    _react2['default'].createElement('input', { type: 'button', onClick: this.handleSearch.bind(this), value: '搜索' })
                 )
             );
         }
@@ -20103,15 +20135,36 @@ var AppContent = (function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
+            // return (
+            //     <ul id="todo-list">
+            //         {
+            //             // {/* 遍历数据 */}
+            //             this.props.toDo.map(function (item, i) {
+            //                 return (
+            //                     <li>
+            //                         <label>{item}</label>
+            //                         <button className="destroy" onClick={this.handleDel.bind(this)} data-key={i}>delete</button>
+            //                     </li>
+            //                 );
+            //             }.bind(this)) // {/* 绑定函数的执行this - 以便 this.handleDel */}
+            //         }
+            //     </ul>
+            // );
+            var reaultData = [];
+            if (this.props.isSearch) {
+                reaultData = this.props.searchResult;
+            } else {
+                reaultData = this.props.toDo;
+            }
             return _react2['default'].createElement(
                 'ul',
                 { id: 'todo-list' },
 
                 // {/* 遍历数据 */}
-                this.props.toDo.map((function (item, i) {
+                reaultData.map((function (item, i) {
                     return _react2['default'].createElement(
                         'li',
-                        null,
+                        { key: i },
                         _react2['default'].createElement(
                             'label',
                             null,

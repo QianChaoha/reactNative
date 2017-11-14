@@ -33,15 +33,36 @@ var AppTitleSearch = (function (_React$Component) {
     _createClass(AppTitleSearch, [{
         key: 'handleAdd',
         value: function handleAdd(e) {
-            e.preventDefault();
             // 通过 refs 获取dom元素，然后获取输入的内容
-            var inputDom = this.refs.inputnew.getDOMNode();
-            var newthing = inputDom.value.trim();
+            var inputDom = this.refs.inputnew;
+            var itemText = inputDom.value.trim();
             // 获取传入的todolist数据
             var rows = this.props.toDo;
-            if (newthing !== '') {
+            if (itemText !== '') {
                 // 更新数据，并使用 onAdd 更新到 TodoList 组件的 state 中
-                rows.push(newthing);
+                rows.push(itemText);
+                this.props.onAdd(rows);
+            }
+            inputDom.value = '';
+        }
+    }, {
+        key: 'handleSearch',
+        value: function handleSearch(e) {
+            // 通过 refs 获取dom元素，然后获取输入的内容
+            var inputDom = this.refs.inputnew;
+            var itemText = inputDom.value.trim();
+            // 获取传入的todolist数据
+            var rows = this.props.toDo;
+            var searchResult = [];
+            if (itemText !== '') {
+                // 更新数据，并使用 onAdd 更新到 TodoList 组件的 state 中
+                rows.map(function (item, i) {
+                    if (item === itemText) {
+                        searchResult.push(itemText);
+                    }
+                });
+                this.props.onSearch(searchResult);
+            } else {
                 this.props.onAdd(rows);
             }
             inputDom.value = '';
@@ -50,11 +71,13 @@ var AppTitleSearch = (function (_React$Component) {
         key: 'render',
         value: function render() {
             return(
-                // form submit 时，触发 handleAdd 事件
+                // button click时，触发 handleAdd 事件
                 _react2['default'].createElement(
-                    'form',
-                    { onSubmit: this.handleAdd.bind(this) },
-                    _react2['default'].createElement('input', { type: 'text', ref: 'inputnew', id: 'todo-new', placeholder: 'typing a newthing todo', autoComplete: 'off' })
+                    'span',
+                    null,
+                    _react2['default'].createElement('input', { type: 'text', ref: 'inputnew', id: 'todo-new', placeholder: '请输入姓名', autoComplete: 'off' }),
+                    _react2['default'].createElement('input', { type: 'button', onClick: this.handleAdd.bind(this), value: '添加' }),
+                    _react2['default'].createElement('input', { type: 'button', onClick: this.handleSearch.bind(this), value: '搜索' })
                 )
             );
         }

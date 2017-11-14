@@ -46,15 +46,36 @@ var AppContent = (function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
+            // return (
+            //     <ul id="todo-list">
+            //         {
+            //             // {/* 遍历数据 */}
+            //             this.props.toDo.map(function (item, i) {
+            //                 return (
+            //                     <li>
+            //                         <label>{item}</label>
+            //                         <button className="destroy" onClick={this.handleDel.bind(this)} data-key={i}>delete</button>
+            //                     </li>
+            //                 );
+            //             }.bind(this)) // {/* 绑定函数的执行this - 以便 this.handleDel */}
+            //         }
+            //     </ul>
+            // );
+            var reaultData = [];
+            if (this.props.isSearch) {
+                reaultData = this.props.searchResult;
+            } else {
+                reaultData = this.props.toDo;
+            }
             return _react2['default'].createElement(
                 'ul',
                 { id: 'todo-list' },
 
                 // {/* 遍历数据 */}
-                this.props.toDo.map((function (item, i) {
+                reaultData.map((function (item, i) {
                     return _react2['default'].createElement(
                         'li',
-                        null,
+                        { key: i },
                         _react2['default'].createElement(
                             'label',
                             null,

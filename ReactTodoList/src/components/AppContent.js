@@ -17,13 +17,34 @@ export default class AppContent extends React.Component {
         this.props.onDel(this.props.toDo);
     }
     render() {
+        // return (
+        //     <ul id="todo-list">
+        //         {
+        //             // {/* 遍历数据 */}
+        //             this.props.toDo.map(function (item, i) {
+        //                 return (
+        //                     <li>
+        //                         <label>{item}</label>
+        //                         <button className="destroy" onClick={this.handleDel.bind(this)} data-key={i}>delete</button>
+        //                     </li>
+        //                 );
+        //             }.bind(this)) // {/* 绑定函数的执行this - 以便 this.handleDel */}
+        //         }
+        //     </ul>
+        // );
+        var reaultData=[];
+        if(this.props.isSearch){
+            reaultData=this.props.searchResult;
+        }else{
+            reaultData=this.props.toDo;
+        }
         return (
             <ul id="todo-list">
                 {
                     // {/* 遍历数据 */}
-                    this.props.toDo.map(function (item, i) {
+                    reaultData.map(function (item, i) {
                         return (
-                            <li>
+                            <li key={i}>
                                 <label>{item}</label>
                                 <button className="destroy" onClick={this.handleDel.bind(this)} data-key={i}>delete</button>
                             </li>
