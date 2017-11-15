@@ -9,10 +9,10 @@ export default React.createClass({
     // 初始化数据
     getInitialState: function () {
         //读取数据
-        var localStorage = window.localStorage;
+        var sessionStorage = window.sessionStorage;
         var tempList = [];
-        if (typeof localStorage.getItem("data") !== undefined && localStorage.getItem("data") !== "") {
-            tempList = localStorage.getItem("data").split(',');
+        if (typeof sessionStorage.getItem("data") !== undefined && sessionStorage.getItem("data") !== ""&&sessionStorage.getItem("data") !== null) {
+            tempList = JSON.parse(sessionStorage.getItem("data"));
         }
         return {
             allList: tempList,
@@ -35,8 +35,7 @@ export default React.createClass({
     },
     render: function () {
         //存储数据
-        var localStorage = window.localStorage;
-        localStorage.setItem("data", this.state.allList);
+        window.sessionStorage.setItem("data",JSON.stringify(this.state.allList))//将this.state.allList转变为字符串存储
         return (
             <div>
                 {/*集成 AppTitleSearch 组件，传入两个属性 onAdd 和 toDo,用于显示顶部搜索内容*/}

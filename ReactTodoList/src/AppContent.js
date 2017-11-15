@@ -24,8 +24,8 @@ export default React.createClass({
                     reaultData.map(function (item, i) {
                             return (
                                 <li key={i}>
-                                    <label>{item}</label>
-                                    <Link to={"/edit"+i} style={{marginLeft:'10px'}}>编辑</Link>
+                                    <label>{item.itemText}</label>
+                                    <Link to={"/edit"+item.index} style={{marginLeft:'10px'}}>编辑</Link>
                                     <button className="destroy" style={{marginLeft:'10px'}} onClick={this.handleDel} data-key={i}>delete</button>
                                 </li>
                             )

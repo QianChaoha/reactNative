@@ -11,8 +11,11 @@ export default React.createClass({
         // 获取传入的todolist数据
         var rows = this.props.toDo;
         if (itemText !== '') {
+            var ItemData={};
             // 更新数据，并使用 onAdd 更新到 TodoList 组件的 state 中
-            rows.push(itemText);
+            ItemData.itemText=itemText;
+            ItemData.index=(rows.length>=0)?(rows.length):0;
+            rows.push(ItemData);
             this.props.onAdd(rows);
         }
         inputDom.value = '';
@@ -27,8 +30,8 @@ export default React.createClass({
         if (itemText !== '') {
             // 更新数据，并使用 onAdd 更新到 TodoList 组件的 state 中
             rows.map(function (item, i) {
-                if (item===itemText){
-                    searchResult.push(itemText);
+                if (item.itemText===itemText){
+                    searchResult.push(item);
                 }
             });
             this.props.onSearch(searchResult);
