@@ -6,14 +6,12 @@ import { Link } from 'react-router'
 export default React.createClass({
     handleDel(e) {
         var delIndex = e.target.getAttribute('data-key');
-        // 更新数据，并使用 onDel 更新到 TodoList 的 state 中，以便 React自动render
-        this.props.toDo.splice(delIndex, 1);
-        this.props.onDel(this.props.toDo);
+        this.props.onDel(delIndex);
     },
     render() {
         var reaultData=[];
         if(this.props.isSearch){
-            reaultData=this.props.searchResult;
+            reaultData=this.props.searchData;
         }else{
             reaultData=this.props.toDo;
         }
@@ -26,7 +24,7 @@ export default React.createClass({
                                 <li key={i}>
                                     <label>{item.itemText}</label>
                                     <Link to={"/edit"+item.index} style={{marginLeft:'10px'}}>编辑</Link>
-                                    <button className="destroy" style={{marginLeft:'10px'}} onClick={this.handleDel} data-key={i}>delete</button>
+                                    <button className="destroy" style={{marginLeft:'10px'}} onClick={this.handleDel} data-key={item.index}>delete</button>
                                 </li>
                             )
                     },this )
