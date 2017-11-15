@@ -39,7 +39,6 @@ export default React.createClass({
     },
     render() {
         return (
-            // button click时，触发 handleAdd 事件
             <span>
                 <input type="text" ref="inputnew" id="todo-new" placeholder="请输入姓名" autoComplete="off" />
                 <input type="button" onClick={this.handleAdd} value="添加"/>

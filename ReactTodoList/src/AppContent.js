@@ -17,9 +17,6 @@ export default React.createClass({
         }else{
             reaultData=this.props.toDo;
         }
-        if (reaultData.length==0){
-            return <div></div>
-        }
         return (
             <ul id="todo-list">
                 {
