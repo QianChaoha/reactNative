@@ -36,11 +36,14 @@ export default class ImageDemo extends Component {
             allBadge.push(
                 <View key={i} style={styles.innerView}>
                     <Text>{bage.title}</Text>
-
+                    {/* 可以显示,使用uri属性,图片需要在原生文件夹中放置,以android为例，加载drawable下的文件 */}
                     <Image source={{uri: bage.icon}} style={styles.imageStyle} Image/>
-
-                    {/*<Image source={require('./imgs/danjianbao.png')} style={styles.imageStyle} Image/>*/}
-                    {/*{<Image source={require('./imgs/'+ bage.icon +'.png')} style={styles.imageStyle} Image/>}*/}
+                   
+                    {/* 可以显示,直接用常量 */}
+                    {/* <Image source={require('./imgs/danjianbao.png')} style={styles.imageStyle} Image/> */}
+                   
+                    {/* 拼接方式不能显示可以显示 */}
+                    {/* {<Image source={require('./imgs/'+ bage.icon +'.png')} style={styles.imageStyle} Image/>} */}
 
                 </View>
             );

@@ -5,50 +5,46 @@
  */
 
 import React, { Component } from 'react';
+import { StackNavigator } from 'react-navigation';
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Button
 } from 'react-native';
+import Hello from './js/page/Hello'
+import Main from './js/page/Main'
+import BViewDemo from './js/page/BViewDemo'
+import ImageDemo from './js/page/ImageDemo'
+import TextInputDemo from './js/page/TextInputDemo'
+import Smzq from './js/page/Smzq'
+import ScrollViewDemo from './js/page/ScrollViewDemo'
+import ListViewDemo from './js/page/ListViewDemo'
+import JggListView from './js/page/JggListView'
+import CarListView from './js/page/CarListView'
+import TabBarDemo from './js/page/TabBarDemo'
 
-export default class reactNative extends Component {
-  //初始化方法
+const SimpleApp = StackNavigator({
+  //默认加载第一个页面，这里用来注册需要跳转的页面 相当于Manifest.xml文件
+  Main: { screen: Main },
+  Hello: { screen: Hello },
+  BViewDemo: { screen: BViewDemo },
+  ImageDemo: { screen: ImageDemo },
+  TextInputDemo: { screen: TextInputDemo },
+  Smzq: { screen: Smzq },
+  ScrollViewDemo: { screen: ScrollViewDemo },
+  ListViewDemo: { screen: ListViewDemo },
+  JggListView: { screen: JggListView },
+  CarListView: { screen: CarListView },
+  TabBarDemo: { screen: TabBarDemo },
+});
+
+export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!钱超
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
+        <SimpleApp/>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
-
-AppRegistry.registerComponent('reactNative', () => reactNative);
+AppRegistry.registerComponent('reactNative', () => App);

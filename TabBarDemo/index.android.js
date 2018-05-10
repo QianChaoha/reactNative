@@ -23,9 +23,11 @@ var TabBarDemo = React.createClass({
   render() {
     return (
       <View style={styles.container}>
-        {/**
+        {
+        /**
          * TabNavigator在github地址https://github.com/happypancake/react-native-tab-navigator
-         */}
+         */
+        }
         <TabNavigator 
          //导航条的背景颜色
           barTintColor='black'

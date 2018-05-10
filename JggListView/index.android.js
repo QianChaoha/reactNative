@@ -33,8 +33,8 @@ var JggListView = React.createClass({
                 renderRow={this.renderRow}
                 contentContainerStyle={{
                     flexDirection:'row',
-                    flexWrap:'wrap',
-                    alignItems:'flex-start',
+                    flexWrap:'wrap',//换行，第一行在上方
+                    alignItems:'flex-start',//交叉轴的起点对齐
                 }}
             ></ListView>
         )

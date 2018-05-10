@@ -12,35 +12,41 @@ export default React.createClass({
     render() {
         var reaultData = [];
         if (this.props.isSearch) {
+            //点击的是搜索
             reaultData = this.props.searchData;
         } else {
             reaultData = this.props.toDo;
         }
-        return (
-            <table >
-                <thead>
-                <tr >
-                    <td >姓名</td>
-                    <td >性别</td>
-                    <td>操作</td>
-                </tr>
-                </thead>
-                <tbody>
-                {reaultData.map(function (item, i) {
-                    return (
-                        <tr key={i}>
-                            <td><span>{item.itemText}</span></td>
-                            <td ><span>{item.sex}</span></td>
-                            <td >
-                                <a href="#" onClick={this.handleDel} data-key={item.index}>删除</a>
-                                <Link to={"/edit"+item.index} style={{marginLeft:'10px'}}>修改</Link>
-                            </td>
-                        </tr>
-                    )
-                }, this)}
-                </tbody>
-            </table>
-        );
+        if (reaultData.length>0){
+            return (
+                <table >
+                    <thead>
+                    <tr >
+                        <td >姓名</td>
+                        <td >性别</td>
+                        <td>操作</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {reaultData.map(function (item, i) {
+                        return (
+                            <tr key={i}>
+                                <td><span>{item.itemText}</span></td>
+                                <td ><span>{item.sex}</span></td>
+                                <td >
+                                    <a href="#" onClick={this.handleDel} data-key={item.index}>删除</a>
+                                    <Link to={"/edit"+item.index} style={{marginLeft:'10px'}}>修改</Link>
+                                </td>
+                            </tr>
+                        )
+                    }, this)}
+                    </tbody>
+                </table>
+            );
+        }else {
+            return <div></div>;
+        }
+       
     }
 
 })

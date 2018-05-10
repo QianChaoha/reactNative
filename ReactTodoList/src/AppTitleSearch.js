@@ -5,7 +5,7 @@ import React from 'react';
 import style from './AppTitleSearch.css';
 export default React.createClass({
     handleAdd(e) {
-        // 通过 refs 获取dom元素，然后获取输入的内容
+        // 通过 refs 获取dom元素，然后获取输入的内容和选择的性别
         var inputDom = this.refs.inputViewAddName;
         var inputViewAddSex = this.refs.inputViewAddSex;
         this.props.onAdd(inputDom.value.trim(),inputViewAddSex.selectedIndex);

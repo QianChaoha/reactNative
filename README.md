@@ -4,7 +4,7 @@
   
   所有示例代码都是在Android模拟器上调试的,IOS暂时还没有调试
   
-  ## 1.reactNative
+  ## 1.Hello
   
   这是第一个reactNative示例代码,相当于hello word
   
