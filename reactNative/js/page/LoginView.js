@@ -17,6 +17,7 @@ import {
 } from 'react-native';
 var Dimensions = require('Dimensions');
 var windowWidth = Dimensions.get('window').width;
+//export default 
 class LoginView extends Component {
 
     render() {
@@ -59,20 +60,20 @@ class LoginView extends Component {
                 </TouchableOpacity>
                 <View style={{
                         flexDirection:'row',
-                        marginLeft:20,
                         marginTop:50,
                         alignItems:'center'
                         }}>
                     <Text style={{
                         color:'#63B7FF',
                         fontSize:20,
+                        marginLeft:20,
                         }}>
                         无法登录
                     </Text>
 
                     <Text style={{
-                       flex:1,
-                       textAlign:'right',
+                        textAlign:'right',
+                        flex:1,
                         marginRight:20,
                         color:'#63B7FF',
                         fontSize:20,
@@ -124,13 +125,13 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     textInputUserNameStyle: {
-        width: windowWidth,
+        width: windowWidth-20,
         backgroundColor: 'white',
         textAlign: 'center',
         marginTop: 50,
     },
     textInputPasswordStyle: {
-        width: windowWidth,
+        width: windowWidth-20,
         backgroundColor: 'white',
         textAlign: 'center',
         marginTop: 2,
@@ -140,7 +141,7 @@ const styles = StyleSheet.create({
         height: 60,
         backgroundColor: '#63B7FF',
         marginTop: 20,
-        borderRadius: 2,
+        borderRadius: 5,
         justifyContent: 'center',
         alignItems: 'center',
     },

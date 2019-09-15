@@ -14,10 +14,12 @@ import {
 var requireData = require('../../data/1.json');
 var demension = require('Dimensions');
 var width = demension.get('window').width;
-var imageWidth = 200;
+//var imageWidth = 200;
+var margin = 10;
 var column = 3;
 //计算出如果分3列，每列的间隔
-var margin = (width - column * imageWidth) / (column + 1);
+//var margin = (width - column * imageWidth) / (column + 1);
+var imageWidth = (width - (column+1) * margin) / column;
 export default class ImageDemo extends Component {
     render() {
         return (
@@ -34,15 +36,15 @@ export default class ImageDemo extends Component {
             var bage = requireData.data[i];//requireData[i]
             allBadge.push(
                     <View key={i} style={styles.innerView}>
-                        <Text>{bage.title}</Text>
+                        <Text style={styles.textStyle}>{bage.title}</Text>
                         {/* 可以显示,使用uri属性,图片需要在原生文件夹中放置,以android为例，加载drawable下的文件 */}
                         <Image source={{ uri: bage.icon }} style={styles.imageStyle} />
 
                         {/* 可以显示,直接用常量 */}
-                        {/* <Image source={require('./imgs/danjianbao.png')} style={styles.imageStyle} /> */}
+                        {/* <Image source={require('../../img/danjianbao.png')} style={styles.imageStyle} /> */}
 
-                        {/* 拼接方式不能显示可以显示 */}
-                        {/* {<Image source={require('./imgs/' + bage.icon + '.png')} style={styles.imageStyle} />} */}
+                        {/* 拼接方式不能显示 */}
+                        {/* {<Image source={require('../../img/' + bage.icon + '.png')} style={styles.imageStyle} />} */}
 
                     </View>
             );
@@ -67,7 +69,6 @@ const styles = StyleSheet.create({
     innerView: {
         marginLeft: margin,
         marginTop: 10,
-        backgroundColor: 'gray',
         alignItems: 'center'
     },
     imageStyle: {
@@ -77,6 +78,7 @@ const styles = StyleSheet.create({
     textStyle: {
         textAlign: 'center',
         color: '#333333',
+        backgroundColor: 'gray',
         marginBottom: 5,
     },
 });

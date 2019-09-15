@@ -37,6 +37,7 @@ var ListViewDemo = React.createClass({
     //数据源中一条数据，分组的ID，行的ID，以及标记是否是高亮选中的状态信息。
     //设置好数据源后，数据源有多少item,此方法就会执行多少次,将每条数据(rowData)和行号(rowID)返回
     renderRow(rowData, sectionID, rowID, highlightRow){
+        //console.warn('sectionID= '+sectionID+' rowID= '+rowID+'  highlightRow= '+highlightRow);
         return (
             <TouchableOpacity
                 activeOpacity={0.5}
