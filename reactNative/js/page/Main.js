@@ -68,6 +68,11 @@ export default class Main extends Component {
           onPress={() => navigate('TabBarDemo')}
           title="TabBarDemo"
         />
+        <Button
+          style={styles.buttonStyle}
+          onPress={() => navigate('LifeCycleDemo')}
+          title="LifeCycleDemo"
+        />
       </View>
     );
   }

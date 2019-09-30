@@ -23,6 +23,7 @@ import ListViewDemo from './js/page/ListViewDemo'
 import JggListView from './js/page/JggListView'
 import CarListView from './js/page/CarListView'
 import TabBarDemo from './js/page/TabBarDemo'
+import LifeCycleDemo from './js/page/LifeCycleDemo'
 
 const SimpleApp = StackNavigator({
   //默认加载第一个页面，这里用来注册需要跳转的页面 相当于Manifest.xml文件
@@ -37,6 +38,7 @@ const SimpleApp = StackNavigator({
   JggListView: { screen: JggListView },
   CarListView: { screen: CarListView },
   TabBarDemo: { screen: TabBarDemo },
+  LifeCycleDemo: { screen: LifeCycleDemo },
 });
 export default class App extends React.Component {
   render() {
