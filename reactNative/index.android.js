@@ -5,5 +5,6 @@
  */
 import App from './App'
 import { AppRegistry } from 'react-native';
+import './Constant';
 
 AppRegistry.registerComponent('reactNative', () => App);

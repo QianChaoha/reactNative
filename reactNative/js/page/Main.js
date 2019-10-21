@@ -73,6 +73,16 @@ export default class Main extends Component {
           onPress={() => navigate('LifeCycleDemo')}
           title="LifeCycleDemo"
         />
+        <Button
+          style={styles.buttonStyle}
+          onPress={() => navigate('ReduxDemo')}
+          title="ReduxDemo"
+        />
+        <Button
+          style={styles.buttonStyle}
+          onPress={() => navigate('PanResponderDemo')}
+          title="手势"
+        />
       </View>
     );
   }
