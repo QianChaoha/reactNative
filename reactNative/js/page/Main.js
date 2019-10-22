@@ -83,6 +83,16 @@ export default class Main extends Component {
           onPress={() => navigate('PanResponderDemo')}
           title="手势"
         />
+        <Button
+          style={styles.buttonStyle}
+          onPress={() => navigate('NetworkDemo')}
+          title="网络请求"
+        />
+        <Button
+          style={styles.buttonStyle}
+          onPress={() => navigate('StorageDemo')}
+          title="数据存储"
+        />
       </View>
     );
   }
